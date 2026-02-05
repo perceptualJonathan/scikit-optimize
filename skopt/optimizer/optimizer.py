@@ -368,7 +368,7 @@ class Optimizer(object):
 
         supported_strategies = ["cl_min", "cl_mean", "cl_max"]
 
-        if not (isinstance(n_points, int) and n_points > 0):
+        if not (any([isinstance(n_points, cls) for cls in [int, np.int8, np.int16, np.int32, np.int64]]) and n_points > 0):
             raise ValueError(
                 "n_points should be int > 0, got " + str(n_points)
             )
